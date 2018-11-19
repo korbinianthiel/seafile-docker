@@ -98,7 +98,8 @@ Tags, based on Semantic Versioning, follow the schema _**x.y.z-a**_ where _**x.y
     
     - #### Reverse proxy #####
       * **REVERSE_PROXY_MODE** (value=**HTTP** or **HTTPS**): configure Seafile to run behind a reverse proxy.
-        The folder **/opt/seafile/seafile-server-latest/seahub/media** must be shared with Apache/Nginx when running behind a reverse proxy
+        The folder **/opt/seahub/** must be shared with Apache/Nginx when running behind a reverse proxy
+
 ## docker-compose.yml example ##
   ```yml
   version: '2'

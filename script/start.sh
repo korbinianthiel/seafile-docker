@@ -90,6 +90,9 @@ do
     source "$conf"
 done
 
+log_info "Moving Seahub folder (symlink issue with Docker when sharing folder)"
+move_seahub_dir
+
 log_info "All is Done"
 log_info "Starting Seafile ..."
 seafile start

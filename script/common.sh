@@ -22,3 +22,10 @@ check_require() {
         exit 1
     fi
 }
+
+move_seahub_dir() {
+    if [[ ! -d /seahub ]]; then
+        mv $LATEST_SERVER_DIR/seahub /
+        ln -sf /seahub $LATEST_SERVER_DIR/seahub
+    fi
+}

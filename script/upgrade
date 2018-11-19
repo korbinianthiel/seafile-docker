@@ -58,6 +58,10 @@ if [[ $NEWEST == $NEW_VERSION ]]; then
       patch_upgrade
     fi
 
+    log_info "moving seahub to root dir"
+    rm -rf /seahub
+    move_seahub_dir
+
     log_info "Deleting cache"
     rm -rf /tmp/seahub_cache/
 
