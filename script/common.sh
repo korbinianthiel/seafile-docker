@@ -22,17 +22,3 @@ check_require() {
         exit 1
     fi
 }
-
-move_media_directory() {
-    log_info "Moving seahub/media directory in root exposed directory"
-    if [ -d "$EXPOSED_ROOT_DIR/seahub" ]; then
-      rm -r  "$EXPOSED_ROOT_DIR/seahub"
-    fi
-    mkdir "$EXPOSED_ROOT_DIR/seahub"
-    mv "$LATEST_SERVER_DIR/seahub/media" "$EXPOSED_ROOT_DIR/seahub/"
-    CUR_DIR=$(pwd)
-    cd "$EXPOSED_ROOT_DIR/seahub/media"
-    ln -sf ../../seahub-data/avatars .
-    cd $CUR_DIR
-    ln -sf "$EXPOSED_ROOT_DIR/seahub/media" "$LATEST_SERVER_DIR/seahub/media"
-}

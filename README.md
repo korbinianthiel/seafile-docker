@@ -63,16 +63,12 @@ Tags, based on Semantic Versioning, follow the schema _**x.y.z-a**_ where _**x.y
           │
           ├── seafile-data
           │
-          ├── seahub
-          │   └── media
-          │
           ├── seahub-data
           │
           └── sqlite
               └── seahub.db
           
    ```       
-    * The folder **seafile/seahub/media** must be shared with Apache/Nginx when running behind a reverse proxy
 
 - ### Environment variables ###
     - #### Seafile #####
@@ -102,7 +98,7 @@ Tags, based on Semantic Versioning, follow the schema _**x.y.z-a**_ where _**x.y
     
     - #### Reverse proxy #####
       * **REVERSE_PROXY_MODE** (value=**HTTP** or **HTTPS**): configure Seafile to run behind a reverse proxy.
-
+        The folder **/opt/seafile/seafile-server-latest/seahub/media** must be shared with Apache/Nginx when running behind a reverse proxy
 ## docker-compose.yml example ##
   ```yml
   version: '2'
@@ -153,7 +149,7 @@ and just run ```docker-compose up -d```
 ## Restoring a previous installation ##
 
  If you already have a previous installation of Seafile server (including non docker installation) and want to use this image you just have to:
-   1. Put ```conf```, ```logs```, ```seafile-data``` directories in the associated volume
+   1. Put ```ccnet```, ```conf```, ```logs```, ```seafile-data```, ```seahub-data``` directories in the associated volume
    2. Run ```docker-compose up -d```
 
 
@@ -161,7 +157,7 @@ and just run ```docker-compose up -d```
 
   You can **start**, **stop**, **restart** seafile and seahub with a command like :
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker-compose exec **seafile** **server** **command**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```docker-compose exec seafile server command```
 
 where:
 

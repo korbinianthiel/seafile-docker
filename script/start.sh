@@ -62,7 +62,6 @@ restore_common_install() {
         ln -sf "$EXPOSED_ROOT_DIR/$EXPOSED_DIR" "$SEAFILE_ROOT_DIR/$EXPOSED_DIR"
     done
     ln -sf "$SERVER_DIR" "$LATEST_SERVER_DIR"
-    ln -sf "$EXPOSED_ROOT_DIR/seahub/media" "$LATEST_SERVER_DIR/seahub/media"
 }
 
 
@@ -79,7 +78,6 @@ if [[ ! -e $LATEST_SERVER_DIR ]]; then
         setup_seafile
         setup_seahub
         setup_exposed_directories
-        move_media_directory
     else
         restore_common_install
         restore_specific_install

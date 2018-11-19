@@ -57,7 +57,6 @@ if [[ $NEWEST == $NEW_VERSION ]]; then
     else
       patch_upgrade
     fi
-    move_media_directory
 
     log_info "Deleting cache"
     rm -rf /tmp/seahub_cache/
