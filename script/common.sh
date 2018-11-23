@@ -25,7 +25,12 @@ check_require() {
 
 move_seahub_dir() {
     if [[ ! -d /seahub ]]; then
-        mv $LATEST_SERVER_DIR/seahub /
+        mkdir /seahub
+    fi
+
+    if [[ -z "$(ls -A /seahub)" ]]; then
+        mv $LATEST_SERVER_DIR/seahub/* /seahub/
+        rm -rf $LATEST_SERVER_DIR/seahub/
         ln -sf /seahub $LATEST_SERVER_DIR/seahub
     fi
 }

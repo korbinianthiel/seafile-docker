@@ -59,7 +59,7 @@ if [[ $NEWEST == $NEW_VERSION ]]; then
     fi
 
     log_info "moving seahub to root dir"
-    rm -rf /seahub
+    rm -rf /seahub/*
     move_seahub_dir
 
     log_info "Deleting cache"
