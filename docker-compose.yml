@@ -19,7 +19,7 @@ services:
     restart: always
     depends_on:
       - mysql-seafile
-      - memcached-seafile
+      #- memcached-seafile
     networks: 
       seafile-network:
 
