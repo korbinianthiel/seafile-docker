@@ -16,6 +16,7 @@ services:
       - REVERSE_PROXY_MODE=${REVERSE_PROXY_MODE}
     volumes:
       - ./data/seafile:/seafile
+      - ./data/seahub:/seahub
     restart: always
     depends_on:
       - mysql-seafile
@@ -41,7 +42,7 @@ services:
     image: nginx:mainline-alpine
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
-      - ./data/seafile:/var/www/seafile
+      - ./data/seahub:/var/www/seahub
     restart: always
     depends_on:
       - seafile
