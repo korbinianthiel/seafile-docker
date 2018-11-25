@@ -1,15 +1,69 @@
-version: '2'
+version: '3.7'
+
 services:
+
   seafile:
-   # image: sabaitech/seafile:latest
+    image: seafile/seafile:6.3.4
     build: .
-    container_name: seafile
-    ports:
-      - "8000:8000"
-      - "8082:8082"
     environment:
-      - SERVER_ADDRESS=my.domain.com
-      - SEAFILE_ADMIN=toto
-      - SEAFILE_ADMIN_PASSWORD=toto
+      - SERVER_ADDRESS=${SERVER_ADDRESS}
+      - MYSQL_SERVER=mysql-seafile
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_USER_PASSWORD=${MYSQL_USER_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - SEAFILE_ADMIN=${SEAFILE_ADMIN}
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD}
+      - REVERSE_PROXY_MODE=${REVERSE_PROXY_MODE}
     volumes:
-      - ./seafile:/seafile
+      - ./data/seafile:/seafile
+    restart: always
+    depends_on:
+      - mysql-seafile
+      - memcached-seafile
+    networks: 
+      seafile-network:
+
+    mysql-seafile:
+      image: mariadb
+      environment:
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+      volumes:
+      - mysql-vol-1:/var/lib/mysql
+      restart: always
+      networks:
+        seafile-network:
+          aliases:
+            - mysql
+
+    nginx-seafile:
+      image: nginx:mainline-alpine
+      volumes:
+        - ./data/conf/nginx:/etc/nginx/conf.d
+        - ./data/seafile:/var/www/seafile
+      restart: always
+      depends_on:
+        - seafile
+      networks:
+        seafile-network:
+          aliases:
+            - nginx
+        proxy-network:
+
+    #memcached-seafile:
+    #  image: memcached:alpine
+    #  restart: always
+    #  networks:
+    #    seafile-network:
+    #      aliases:
+    #        - memcached
+
+networks:
+  seafile-network:
+    name: seafile-network
+  proxy-network:
+    external: true
+
+volumes:
+  mysql-vol-1:
