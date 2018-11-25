@@ -23,41 +23,41 @@ services:
     networks: 
       seafile-network:
 
-    mysql-seafile:
-      image: mariadb
-      environment:
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
-      volumes:
+  mysql-seafile:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+    volumes:
       - mysql-vol-1:/var/lib/mysql
-      restart: always
-      networks:
-        seafile-network:
-          aliases:
-            - mysql
+    restart: always
+    networks:
+      seafile-network:
+        aliases:
+          - mysql
 
-    nginx-seafile:
-      image: nginx:mainline-alpine
-      volumes:
-        - ./data/conf/nginx:/etc/nginx/conf.d
-        - ./data/seafile:/var/www/seafile
-      restart: always
-      depends_on:
-        - seafile
-      networks:
-        seafile-network:
-          aliases:
-            - nginx
-        proxy-network:
+  nginx-seafile:
+    image: nginx:mainline-alpine
+    volumes:
+      - ./data/conf/nginx:/etc/nginx/conf.d
+      - ./data/seafile:/var/www/seafile
+    restart: always
+    depends_on:
+      - seafile
+    networks:
+      seafile-network:
+        aliases:
+          - nginx
+      proxy-network:
 
-    #memcached-seafile:
-    #  image: memcached:alpine
-    #  restart: always
-    #  networks:
-    #    seafile-network:
-    #      aliases:
-    #        - memcached
+  #memcached-seafile:
+  #  image: memcached:alpine
+  #  restart: always
+  #  networks:
+  #    seafile-network:
+  #      aliases:
+  #        - memcached
 
 networks:
   seafile-network:
