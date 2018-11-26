@@ -15,8 +15,9 @@ services:
       - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD}
       - REVERSE_PROXY_MODE=${REVERSE_PROXY_MODE}
     volumes:
-      - ./data/seafile:/seafile
-      - ./data/seahub:/seahub
+      - ./data/seafile-exposed:/seafile
+      - ./data/seahub-exposed:/seahub
+      - ./data/seafile-opt:/opt/seafile
     restart: always
     depends_on:
       - mysql-seafile
@@ -42,7 +43,8 @@ services:
     image: nginx:mainline-alpine
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
-      - ./data/seahub:/var/www/seahub
+      - ./data/seahub-exposed:/var/www/seahub
+      - ./data/seafile-opt:/opt/seafile
     restart: always
     depends_on:
       - seafile
