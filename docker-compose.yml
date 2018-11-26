@@ -17,7 +17,7 @@ services:
     volumes:
       - ./data/seafile-exposed:/seafile
       - ./data/seahub-exposed:/seahub
-      - ./data/seafile-opt:/opt/seafile:ro
+      - ./data/seafile-opt:/opt/seafile
     restart: always
     depends_on:
       - mysql-seafile
@@ -44,7 +44,7 @@ services:
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
       - ./data/seahub-exposed:/var/www/seahub
-      - ./data/seafile-opt:/opt/seafile:ro
+      - ./data/seafile-opt:/opt/seafile
     restart: always
     depends_on:
       - seafile
