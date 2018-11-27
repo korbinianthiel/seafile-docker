@@ -15,8 +15,9 @@ services:
       - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD}
       - REVERSE_PROXY_MODE=${REVERSE_PROXY_MODE}
     volumes:
-      - /smb-share/seafile/seafile:/seafile
-      - /smb-share/seafile/seahub:/seahub
+      - ./data/seafile:/seafile
+      - ./data/seahub:/seahub
+      - /smb-share/seafile-data:/seafile-data
     restart: always
     depends_on:
       - mysql-seafile
@@ -42,7 +43,7 @@ services:
     image: nginx:mainline-alpine
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
-      - /smb-share/seafile/seahub:/var/www/seahub
+      - ./data/seahub:/var/www/seahub
     restart: always
     depends_on:
       - seafile
@@ -53,10 +54,8 @@ services:
       proxy-network:
 
   memcached-seafile:
-    image: bitnami/memcached
+    image: memcached:alpine
     restart: always
-    environment:
-      - MEMCACHED_DEBUG_MODE=yes
     networks:
       seafile-network:
         aliases:

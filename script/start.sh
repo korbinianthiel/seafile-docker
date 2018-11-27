@@ -3,8 +3,9 @@
 source /usr/local/bin/common.sh
 
 SERVER_DIR="$SEAFILE_ROOT_DIR"/$(ls -1 "$SEAFILE_ROOT_DIR" | grep -E "seafile-server-[0-9.-]+")
-EXPOSED_DIRS="conf ccnet logs seafile-data seahub-data"
+EXPOSED_DIRS="conf ccnet logs seahub-data"
 EXPOSED_ROOT_DIR=${EXPOSED_ROOT_DIR:-"/seafile"}
+EXPOSED_DATA_DIR=${EXPOSED_DATA_DIR:-"/seafile-data"}
 REVERSE_PROXY_MODE=$(echo "$REVERSE_PROXY_MODE" |  tr '[:upper:]' '[:lower:]')
 SERVER_ADDRESS=${SERVER_ADDRESS:-"127.0.0.1"}
 
@@ -35,6 +36,14 @@ setup_exposed_directories() {
         fi
         ln -sf "$EXPOSED_ROOT_DIR/$EXPOSED_DIR" "$SEAFILE_ROOT_DIR/$EXPOSED_DIR"
     done
+
+    log_info "Creating exposed data directory"
+    if [[ -d $SEAFILE_ROOT_DIR/seafile-data ]]; then
+       	mv "$SEAFILE_ROOT_DIR/seafile-data/*" "$EXPOSED_DATA_DIR"
+    else
+        mkdir "$EXPOSED_DATA_DIR"
+    fi
+    ln -sf "$EXPOSED_DATA_DIR" "$SEAFILE_ROOT_DIR/seafile-data"
 }
 
 is_new_install() {
@@ -61,6 +70,9 @@ restore_common_install() {
     do
         ln -sf "$EXPOSED_ROOT_DIR/$EXPOSED_DIR" "$SEAFILE_ROOT_DIR/$EXPOSED_DIR"
     done
+
+    ln -sf "$EXPOSED_DATA_DIR" "$SEAFILE_ROOT_DIR/seafile-data"
+
     ln -sf "$SERVER_DIR" "$LATEST_SERVER_DIR"
 }
 

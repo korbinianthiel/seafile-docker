@@ -31,6 +31,7 @@ RUN \
         zlib1g-dev \
         libmemcached-dev \
         python-pip \
+    && python2.7 -m pip install pillow moviepy \
     && python2.7 -m pip install pylibmc \
     && python2.7 -m pip install django-pylibmc
 
