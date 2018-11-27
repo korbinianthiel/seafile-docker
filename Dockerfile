@@ -29,10 +29,8 @@ RUN \
     apt-get install --no-install-recommends -y \
         python-dev \
         libmemcached-dev \
-        python-pip \
-    && pip install --upgrade pip \
-    && pip install pylibmc \
-    && pip install django-pylibmc
+    && python2.7 -m pip install pylibmc \
+    && python2.7 -m pip install django-pylibmc
 
 RUN \
     apt-get clean \
