@@ -17,7 +17,7 @@ services:
     volumes:
       - ./data/seafile:/seafile
       - ./data/seahub:/seahub
-      - /smb-share/seafile-data:/seafile-data
+      - /smb-share/seafile-share:/seafile-share
     restart: always
     depends_on:
       - mysql-seafile
