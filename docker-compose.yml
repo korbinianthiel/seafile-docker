@@ -21,7 +21,7 @@ services:
     restart: always
     depends_on:
       - mysql-seafile
-      - memcached-seafile
+      #- memcached-seafile
     networks: 
       seafile-network:
 
@@ -53,13 +53,13 @@ services:
           - nginx
       proxy-network:
 
-  memcached-seafile:
-    image: bitnami/memcached
-    restart: always
-    networks:
-      seafile-network:
-        aliases:
-          - memcached
+#  memcached-seafile:
+#    image: bitnami/memcached
+#    restart: always
+#    networks:
+#      seafile-network:
+#        aliases:
+#          - memcached
 
 networks:
   seafile-network:
