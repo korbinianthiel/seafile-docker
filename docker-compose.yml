@@ -55,7 +55,7 @@ services:
   memcached-seafile:
     image: memcached:alpine
     environment:
-      - MEMCACHED_DEBUG_MODE=yes
+      - MEMCACHED_DEBUG_MODE
     restart: always
     networks:
       seafile-network:
