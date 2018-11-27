@@ -28,6 +28,7 @@ RUN \
 RUN \
     apt-get install --no-install-recommends -y \
         python-dev \
+        zlib1g-dev \
         libmemcached-dev \
         python-pip \
     && python2.7 -m pip install pylibmc \

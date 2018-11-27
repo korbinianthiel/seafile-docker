@@ -55,6 +55,8 @@ services:
   memcached-seafile:
     image: bitnami/memcached
     restart: always
+    environment:
+      - MEMCACHED_DEBUG_MODE
     networks:
       seafile-network:
         aliases:
