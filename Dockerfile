@@ -23,8 +23,17 @@ RUN \
         python-mysqldb \
         python-urllib3 \
         python-memcache \
-        sqlite3 \
-    && apt-get clean \
+        sqlite3
+
+RUN \
+    apt-get install --no-install-recommends -y \
+        python-dev \
+        libmemcached-dev \
+    && pip install pylibmc \
+    && pip install django-pylibmc
+
+RUN \
+    apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /var/log/*
 
