@@ -54,7 +54,7 @@ services:
       proxy-network:
 
   memcached-seafile:
-    image: memcached:alpine
+    image: bitnami/memcached
     restart: always
     networks:
       seafile-network:
