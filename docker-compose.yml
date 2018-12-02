@@ -58,7 +58,7 @@ services:
     restart: always
     networks:
       seafile-network:
-        ipv4_address: 172.98.1.2
+        ipv4_address: 172.98.1.10
         aliases:
           - memcached
 
