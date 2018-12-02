@@ -45,6 +45,7 @@ services:
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
       #- ./data/seahub:/var/www/seahub
+      - ./data/seafile:/seafile
       - seafile-vol-1:/opt/seafile
     restart: always
     depends_on:
