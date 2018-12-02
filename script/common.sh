@@ -35,8 +35,9 @@ move_seahub_dir() {
 
         rm -rf /seahub/media/avatars
         mkdir /seahub/media/avatars
-        cp -r $LATEST_SERVER_DIR/seahub-data/avatars/* /seahub/avatars/
+        cp -r $SEAFILE_ROOT_DIR/seahub-data/avatars/* /seahub/avatars/
     else
+        rm -rf $LATEST_SERVER_DIR/seahub/
         ln -sf /seahub $LATEST_SERVER_DIR/seahub
     fi
 }
