@@ -28,9 +28,9 @@ services:
   mysql-seafile:
     image: bitnami/mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_PASSWORD=${MYSQL_USER_PASSWORD}
     volumes:
       - mysql-vol-1:/var/lib/mysql
     restart: always
