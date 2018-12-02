@@ -26,7 +26,7 @@ services:
       seafile-network:
 
   mysql-seafile:
-    image: mariadb
+    image: bitnami/mariadb
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
@@ -40,7 +40,7 @@ services:
           - mysql
 
   nginx-seafile:
-    image: nginx:mainline-alpine
+    image: bitnami/nginx
     volumes:
       - ./data/conf/nginx:/etc/nginx/conf.d
       - ./data/seahub:/var/www/seahub
