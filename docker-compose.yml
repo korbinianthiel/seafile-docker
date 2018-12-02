@@ -53,13 +53,13 @@ services:
           - nginx
       proxy-network:
 
-#  memcached-seafile:
-#    image: bitnami/memcached
-#    restart: always
-#    networks:
-#      seafile-network:
-#        aliases:
-#          - memcached
+  memcached-seafile:
+    image: memcached
+    restart: always
+    networks:
+      seafile-network:
+        aliases:
+          - memcached
 
 networks:
   seafile-network:
