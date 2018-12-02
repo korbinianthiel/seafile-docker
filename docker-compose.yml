@@ -21,7 +21,7 @@ services:
     restart: always
     depends_on:
       - mysql-seafile
-      #- memcached-seafile
+      - memcached-seafile
     networks: 
       seafile-network:
 
@@ -58,6 +58,7 @@ services:
     restart: always
     networks:
       seafile-network:
+        ipv4_address: 172.98.1.2
         aliases:
           - memcached
 
@@ -65,6 +66,10 @@ networks:
   seafile-network:
     name: seafile-network
     internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.98.1.0/24
   proxy-network:
     external: true
 
