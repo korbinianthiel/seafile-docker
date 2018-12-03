@@ -16,8 +16,8 @@ services:
       - REVERSE_PROXY_MODE=${REVERSE_PROXY_MODE}
     volumes:
       - ./data/seafile:/seafile
-      - seafile-vol-1:/opt/seafile
       - /smb-share/seafile-share:/seafile-share 
+      - seafile-vol-1:/opt/seafile
     restart: always
     depends_on:
       - mysql-seafile
