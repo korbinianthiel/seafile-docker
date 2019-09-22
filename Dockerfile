@@ -7,7 +7,7 @@ ENV \
     EXPOSED_ROOT_DIR=/seafile \
     SEAFILE_ROOT_DIR=/opt/seafile \
     LATEST_SERVER_DIR=/opt/seafile/seafile-server-latest \
-    SEAFILE_VERSION=6.3.4 \
+    SEAFILE_VERSION=7.0.4 \
     SEAFILE_URL_PATTERN=https://download.seadrive.org/seafile-server_VERSION_x86-64.tar.gz
 
 RUN \
@@ -23,7 +23,8 @@ RUN \
         python-mysqldb \
         python-urllib3 \
         python-memcache \
-        sqlite3
+        sqlite3 \
+        python-sqlalchemy
 
 RUN \
     apt-get install --no-install-recommends -y \
