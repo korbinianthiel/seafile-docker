@@ -36,6 +36,12 @@ RUN \
     && python2.7 -m pip install django-pylibmc
 
 RUN \
+    apt-get install --no-install-recommends -y \
+        python3 python3-setuptools python3-pip \
+    && pip3 install Pillow pylibmc captcha jinja2 sqlalchemy \
+        django-pylibmc django-simple-captcha python3-ldap
+
+RUN \
     apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /var/log/*
