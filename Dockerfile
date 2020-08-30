@@ -7,7 +7,7 @@ ENV \
     EXPOSED_ROOT_DIR=/seafile \
     SEAFILE_ROOT_DIR=/opt/seafile \
     LATEST_SERVER_DIR=/opt/seafile/seafile-server-latest \
-    SEAFILE_VERSION=7.0.4 \
+    SEAFILE_VERSION=7.1.4 \
     SEAFILE_URL_PATTERN=https://download.seadrive.org/seafile-server_VERSION_x86-64.tar.gz
 
 RUN \
@@ -15,25 +15,32 @@ RUN \
     && apt-get install --no-install-recommends -y \
         crudini \
         procps \
-        wget \
-        python2.7 \
-        python-setuptools \
-        python-imaging \
-        python-ldap \
-        python-mysqldb \
-        python-urllib3 \
-        python-memcache \
-        sqlite3 \
-        python-sqlalchemy
+        wget
 
-RUN \
-    apt-get install --no-install-recommends -y \
-        python-dev \
-        zlib1g-dev \
-        libmemcached-dev \
-        python-pip \
-    && python2.7 -m pip install pylibmc \
-    && python2.7 -m pip install django-pylibmc
+#RUN \
+#    apt-get -y update \
+#    && apt-get install --no-install-recommends -y \
+#        crudini \
+#        procps \
+#        wget \
+#        python2.7 \
+#        python-setuptools \
+#        python-imaging \
+#        python-ldap \
+#        python-mysqldb \
+#        python-urllib3 \
+#        python-memcache \
+#        sqlite3 \
+#        python-sqlalchemy
+
+#RUN \
+#    apt-get install --no-install-recommends -y \
+#        python-dev \
+#        zlib1g-dev \
+#        libmemcached-dev \
+#        python-pip \
+#    && python2.7 -m pip install pylibmc \
+#    && python2.7 -m pip install django-pylibmc
 
 RUN \
     apt-get install --no-install-recommends -y \

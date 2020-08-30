@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   seafile:
-    image: seafile/seafile:7.0.4-1
+    image: seafile/seafile:7.1.4
     build: .
     environment:
       - SERVER_ADDRESS=${SERVER_ADDRESS}
