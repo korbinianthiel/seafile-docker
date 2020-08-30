@@ -17,31 +17,6 @@ RUN \
         procps \
         wget
 
-#RUN \
-#    apt-get -y update \
-#    && apt-get install --no-install-recommends -y \
-#        crudini \
-#        procps \
-#        wget \
-#        python2.7 \
-#        python-setuptools \
-#        python-imaging \
-#        python-ldap \
-#        python-mysqldb \
-#        python-urllib3 \
-#        python-memcache \
-#        sqlite3 \
-#        python-sqlalchemy
-
-#RUN \
-#    apt-get install --no-install-recommends -y \
-#        python-dev \
-#        zlib1g-dev \
-#        libmemcached-dev \
-#        python-pip \
-#    && python2.7 -m pip install pylibmc \
-#    && python2.7 -m pip install django-pylibmc
-
 RUN \
     apt-get install --no-install-recommends -y \
         python3 python3-setuptools python3-pip \
