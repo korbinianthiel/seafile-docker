@@ -7,7 +7,7 @@ ENV \
     EXPOSED_ROOT_DIR=/seafile \
     SEAFILE_ROOT_DIR=/opt/seafile \
     LATEST_SERVER_DIR=/opt/seafile/seafile-server-latest \
-    SEAFILE_VERSION=7.1.5 \
+    SEAFILE_VERSION=8.0.3 \
     SEAFILE_URL_PATTERN=https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_VERSION_x86-64.tar.gz
 
 RUN \
