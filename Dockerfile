@@ -20,7 +20,7 @@ RUN \
 RUN \
     apt-get install --no-install-recommends -y \
         python3 python3-setuptools python3-pip \
-        default-libmysqlclient-dev libssl-dev \
+        python3-dev default-libmysqlclient-dev gcc \
     && pip3 install wheel \
     && pip3 install Pillow pylibmc captcha jinja2 sqlalchemy \
         django-pylibmc django-simple-captcha python3-ldap \
